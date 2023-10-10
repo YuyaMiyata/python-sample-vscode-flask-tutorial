@@ -19,6 +19,12 @@ steps:
     versionSpec: '$(python.version)'
   displayName: 'Use Python $(python.version)'
 
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)/artifacts_sample.txt'
+    publishLocation: pipeline
+    artifact: 'drop'
+
 - script: |
     python -m pip install --upgrade pip
     pip install -r requirements.txt
